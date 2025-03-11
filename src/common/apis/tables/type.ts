@@ -29,3 +29,62 @@ export type TableResponseData = ApiResponseData<{
   list: TableData[]
   total: number
 }>
+
+export interface SensorRequestData {
+  /** 查询参数：device_id */
+  device_id?: string
+  /** 查询参数：configs or sensordata */
+  datatype?: string
+}
+
+export interface SensorData {
+  sensor: string
+  val: number
+}
+
+export type SensorResponseData = ApiResponseData<{
+  json: string
+}>
+
+export interface DeviceIdRequestData {
+  /** 用作初始查询，不需要参数 */
+}
+
+export type DeviceIdResponseData = ApiResponseData<{
+  json: string
+}>
+
+export interface DeviceIdData {
+  deviceid: string
+  val: number | string
+}
+
+export interface DeviceConfigRequestData {
+  /** 查询参数：device_id */
+  device_id?: string
+}
+
+export type DeviceConfigResponseData = ApiResponseData<{
+  json: string
+}>
+
+export interface DeviceConfigData {
+  json?: string
+}
+
+export interface DevicePropertySetRequestData {
+  device_id?: string
+}
+
+export type DevicePropertySetResponseData = ApiResponseData<{
+  json: string
+}>
+
+export interface DevicePropertySetData {
+  json?: string
+}
+
+export interface DeviceUpdatePropertySetRequestData {
+  device_id?: string
+  json?: string
+}

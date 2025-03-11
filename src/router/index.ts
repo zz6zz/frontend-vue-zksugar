@@ -64,6 +64,17 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    /** 不知道为什么不能放到demo下，目前这样没有带侧边导航栏 */
+    path: "/device/:id", // 使用动态路由参数
+    component: () => import("@/pages/demo/device-node/sensordata.vue"),
+    name: "sensordata",
+    meta: {
+      title: "sensordata",
+      svgIcon: "dashboard",
+      affix: true
+    }
+  },
+  {
     path: "/demo",
     component: Layouts,
     redirect: "/demo/unocss",
@@ -79,6 +90,30 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: "UnoCSS",
         meta: {
           title: "UnoCSS"
+        }
+      },
+      {
+        path: "new-page",
+        component: () => import("@/pages/demo/new-page/index.vue"),
+        name: "new-page",
+        meta: {
+          title: "new-page"
+        }
+      },
+      {
+        path: "sensor-node",
+        component: () => import("@/pages/demo/sensor-node/index.vue"),
+        name: "sensor-node",
+        meta: {
+          title: "sensor-node"
+        }
+      },
+      {
+        path: "device-node",
+        component: () => import("@/pages/demo/device-node/index.vue"),
+        name: "device-node",
+        meta: {
+          title: "device-node"
         }
       },
       {

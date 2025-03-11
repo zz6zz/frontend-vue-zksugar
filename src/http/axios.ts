@@ -129,3 +129,32 @@ const instance = createInstance()
 
 /** 用于请求的方法 */
 export const request = createRequest(instance)
+
+/** 创建请求方法 */
+function createAgsRequest(instance: AxiosInstance) {
+  return <T>(config: AxiosRequestConfig): Promise<T> => {
+    const token = getToken()
+    // 默认配置
+    const defaultConfig: AxiosRequestConfig = {
+      // 接口地址
+      baseURL: import.meta.env.VITE_AGSUGAR_URL,
+      // 请求头
+      headers: {
+        // 携带 Token
+        "Authorization": token ? `Bearer ${token}` : undefined,
+        "Content-Type": "application/json"
+      },
+      // 请求体
+      data: {},
+      // 请求超时
+      timeout: 5000,
+      // 跨域请求时是否携带 Cookies
+      withCredentials: false
+    }
+    // 将默认配置 defaultConfig 和传入的自定义配置 config 进行合并成为 mergeConfig
+    const mergeConfig = merge(defaultConfig, config)
+    return instance(mergeConfig)
+  }
+}
+/** 用于请求的方法 */
+export const agsRequest = createAgsRequest(instance)

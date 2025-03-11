@@ -43,6 +43,13 @@ export default defineConfig(({ mode }) => {
           ws: false,
           // 是否允许跨域
           changeOrigin: true
+        },
+        "/api/agsugar": {
+          target: "http://127.0.0.1:8123",
+          // 是否为 WebSocket
+          ws: false,
+          // 是否允许跨域
+          changeOrigin: true
         }
       },
       // 是否允许跨域
